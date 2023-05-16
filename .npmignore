@@ -6,3 +6,10 @@ test/
 test1/
 test1/
 **/*副本*
+script/
+*.css
+rollup.config*
+tsconfig*
+.DS_Store
+.idea
+.vscode
