@@ -1,0 +1,8 @@
+node_modules/
+**/node_modules/
+src/
+plugin/
+test/
+test1/
+test1/
+**/*副本*

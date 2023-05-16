@@ -1,0 +1,36 @@
+{
+  "name": "@anlion/shared",
+  "version": "1.0.4",
+  "description": "internal utils shared across @a packages",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+	"scripts": {
+		"build": "rollup",
+		"rollup": "rollup -c",
+		"rollup:red": "rollup -c  && node ./script/index.js",
+		"rollup:w": "rollup -c -w",
+		"stub": "unbuild --stub",
+		"pub": "npm publish --access public"
+	},
+	"exports": {
+		".": {
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs"
+		}
+	},
+  "sideEffects": false,
+	"private": false,
+  "keywords": [
+    "vue"
+  ],
+  "author": "cmz",
+  "license": "MIT",
+	"funding": "https://www.npmjs.com/package/css-allin-class",
+	"publishConfig": {
+	  "registry": "https://registry.npmjs.com"
+	},
+  "homepage": "https://www.npmjs.com/package/@anlion/shared"
+}

@@ -1,0 +1,301 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`预设规则 > is 1`] = `
+{
+  "dynamicRules": {
+    "/^(bottom|b)-(-?\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^\\(bottom\\|b\\)-\\(-\\?\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^(br|radius|rounded)(?:-(tr|tl|br|bl))?-?(\\\\d+)-?(\\\\d+)?-?(\\\\d+)?-?(\\\\d+)?(rem|em|px|rpx|%)?$/": [
+      /\\^\\(br\\|radius\\|rounded\\)\\(\\?:-\\(tr\\|tl\\|br\\|bl\\)\\)\\?-\\?\\(\\\\d\\+\\)-\\?\\(\\\\d\\+\\)\\?-\\?\\(\\\\d\\+\\)\\?-\\?\\(\\\\d\\+\\)\\?\\(rem\\|em\\|px\\|rpx\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^(color|c)-#([\\\\d\\\\w]{1,6})$/": [
+      /\\^\\(color\\|c\\)-#\\(\\[\\\\d\\\\w\\]\\{1,6\\}\\)\\$/,
+      [Function],
+    ],
+    "/^(color|c)-(\\\\w+)$/": [
+      /\\^\\(color\\|c\\)-\\(\\\\w\\+\\)\\$/,
+      [Function],
+    ],
+    "/^(color|c)-(cur|inherit|initial|unset)$/": [
+      /\\^\\(color\\|c\\)-\\(cur\\|inherit\\|initial\\|unset\\)\\$/,
+      [Function],
+    ],
+    "/^(height|h)-(\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^\\(height\\|h\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^(left|l)-(-?\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^\\(left\\|l\\)-\\(-\\?\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^(right|r)-(-?\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^\\(right\\|r\\)-\\(-\\?\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^(top|t)-(-?\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^\\(top\\|t\\)-\\(-\\?\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^(width|w)-(\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^\\(width\\|w\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^bg-#([\\\\d\\\\w]+)$/": [
+      /\\^bg-#\\(\\[\\\\d\\\\w\\]\\+\\)\\$/,
+      [Function],
+    ],
+    "/^bg-(\\\\w+)$/": [
+      /\\^bg-\\(\\\\w\\+\\)\\$/,
+      [Function],
+    ],
+    "/^bg-linear-(\\\\d+)-(\\\\d+)-(\\\\d+)$/": [
+      /\\^bg-linear-\\(\\\\d\\+\\)-\\(\\\\d\\+\\)-\\(\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^bg-rgba-(\\\\d+)-(\\\\d+)-(\\\\d+)-((\\\\d+)|(?:0*\\\\.(\\\\d+)))$/": [
+      /\\^bg-rgba-\\(\\\\d\\+\\)-\\(\\\\d\\+\\)-\\(\\\\d\\+\\)-\\(\\(\\\\d\\+\\)\\|\\(\\?:0\\*\\\\\\.\\(\\\\d\\+\\)\\)\\)\\$/,
+      [Function],
+    ],
+    "/^border-#([\\\\d\\\\w]+)$/": [
+      /\\^border-#\\(\\[\\\\d\\\\w\\]\\+\\)\\$/,
+      [Function],
+    ],
+    "/^border-?(t|l|r|b)?-(\\\\d+)(px|rpx)?$/": [
+      /\\^border-\\?\\(t\\|l\\|r\\|b\\)\\?-\\(\\\\d\\+\\)\\(px\\|rpx\\)\\?\\$/,
+      [Function],
+    ],
+    "/^f-(\\\\d+)$/": [
+      /\\^f-\\(\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^fs-(\\\\d+)$/": [
+      /\\^fs-\\(\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^fw-(\\\\d+)$/": [
+      /\\^fw-\\(\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^gba-(\\\\d+)-(\\\\d+)-(\\\\d+)$/": [
+      /\\^gba-\\(\\\\d\\+\\)-\\(\\\\d\\+\\)-\\(\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^inset-(-?0?\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^inset-\\(-\\?0\\?\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^lh-(\\\\d+|\\\\d*\\\\.\\\\d+)(rem|vh|vw|px|rpx|em)*$/": [
+      /\\^lh-\\(\\\\d\\+\\|\\\\d\\*\\\\\\.\\\\d\\+\\)\\(rem\\|vh\\|vw\\|px\\|rpx\\|em\\)\\*\\$/,
+      [Function],
+    ],
+    "/^line-(\\\\d+)$/": [
+      /\\^line-\\(\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^m-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^m-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^m-(\\\\d*\\\\.?\\\\d+)-(\\\\d*\\\\.?\\\\d+)-(\\\\d*\\\\.?\\\\d+)-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^m-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^m-(\\\\d*\\\\.?\\\\d+)-(\\\\d*\\\\.?\\\\d+|auto)$/": [
+      /\\^m-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\|auto\\)\\$/,
+      [Function],
+    ],
+    "/^max-h-(\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^max-h-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^max-w-(\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^max-w-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^mb-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^mb-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^min-h-(\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^min-h-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^min-w-(\\\\d*\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^min-w-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^ml-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^ml-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^mlr-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^mlr-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^mr-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^mr-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^mt-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^mt-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^mtb-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^mtb-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^opacity-(0?\\\\.?\\\\d+)$/": [
+      /\\^opacity-\\(0\\?\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^order-(-?\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^order-\\(-\\?\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^p-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^p-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^p-(\\\\d*\\\\.?\\\\d+)-(\\\\d*\\\\.?\\\\d+)-(\\\\d*\\\\.?\\\\d+)-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^p-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^p-(\\\\d*\\\\.?\\\\d+)-(\\\\d+|auto)$/": [
+      /\\^p-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)-\\(\\\\d\\+\\|auto\\)\\$/,
+      [Function],
+    ],
+    "/^pb-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^pb-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^pl-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^pl-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^plr-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^plr-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^pr-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^pr-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^pt-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^pt-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^ptb-(\\\\d*\\\\.?\\\\d+)$/": [
+      /\\^ptb-\\(\\\\d\\*\\\\\\.\\?\\\\d\\+\\)\\$/,
+      [Function],
+    ],
+    "/^rgba-(\\\\d+)-(\\\\d+)-(\\\\d+)-((\\\\d+)|(?:0*\\\\.(\\\\d+)))$/": [
+      /\\^rgba-\\(\\\\d\\+\\)-\\(\\\\d\\+\\)-\\(\\\\d\\+\\)-\\(\\(\\\\d\\+\\)\\|\\(\\?:0\\*\\\\\\.\\(\\\\d\\+\\)\\)\\)\\$/,
+      [Function],
+    ],
+    "/^shadow-?(\\\\d+)?-?(\\\\d+)?-?(\\\\d+)?-?(\\\\d+)?-?(0?\\\\.\\\\d+)?$/": [
+      /\\^shadow-\\?\\(\\\\d\\+\\)\\?-\\?\\(\\\\d\\+\\)\\?-\\?\\(\\\\d\\+\\)\\?-\\?\\(\\\\d\\+\\)\\?-\\?\\(0\\?\\\\\\.\\\\d\\+\\)\\?\\$/,
+      [Function],
+    ],
+    "/^translateX-(0?\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^translateX-\\(0\\?\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^translateY-(0?\\\\.?\\\\d+)(rem|vh|vw|%)?$/": [
+      /\\^translateY-\\(0\\?\\\\\\.\\?\\\\d\\+\\)\\(rem\\|vh\\|vw\\|%\\)\\?\\$/,
+      [Function],
+    ],
+    "/^z-(-?\\\\d+|auto)$/": [
+      /\\^z-\\(-\\?\\\\d\\+\\|auto\\)\\$/,
+      [Function],
+    ],
+  },
+  "staticRules": {
+    "absolute": "position: absolute;",
+    "align-baseline": "vertical-align: baseline;",
+    "align-bottom": "vertical-align: bottom;",
+    "align-middle": "vertical-align: middle;",
+    "align-text-bottom": "vertical-align: text-bottom;",
+    "align-text-top": "vertical-align: text-top;",
+    "align-top": "vertical-align: top;",
+    "as-b": "align-self: baseline;",
+    "as-c": "align-self: center;",
+    "as-e": "align-self: flex-end;",
+    "as-s": "align-self: flex-start;",
+    "as-st": "align-self: stretch;",
+    "block": "display: block;",
+    "border-dashed": "border-style: dashed;",
+    "border-dotted": "border-style: dotted;",
+    "border-double": "border-style: double;",
+    "border-none": "border-style: none;",
+    "border-solid": "border-style: solid;",
+    "border-transparent": "border-color: transparent;",
+    "box-border": "	box-sizing: border-box;",
+    "box-content": "box-sizing: content-box;",
+    "capitalize": "text-transform: capitalize;",
+    "f-ac": "align-items: center;",
+    "f-ac-jc": " align-items: center;justify-content: center;",
+    "f-ac-je": " align-items: center;justify-content: flex-end;",
+    "f-ac-jsa": " align-items: center;justify-content: space-around;",
+    "f-ac-jsb": " align-items: center;justify-content: space-between;",
+    "f-ae": "align-items: flex-end;",
+    "f-as": "align-items: flex-start;",
+    "f-jc": "justify-content: center;",
+    "f-je": "justify-content: flex-end;",
+    "f-js": " justify-content: flex-start;",
+    "f-jsa": "justify-content: space-around;",
+    "f-jsb": "justify-content: space-between;",
+    "fc": "display: flex;flex-direction: column;",
+    "fixed": "position: fixed;",
+    "flex": "display: flex;",
+    "fr": "display: flex;flex-direction: row;",
+    "fw": "flex-wrap:wrap;",
+    "fw-b": "font-weight: bold;",
+    "grid": "display: grid;",
+    "inline-block": "display: inline-block;",
+    "invisible": "visibility: hidden;",
+    "isolate": "isolation: isolate;",
+    "isolation-auto": "isolation: auto;",
+    "line": " border-bottom: 2px solid #CDCDCD; width: 100%;height: 2px;",
+    "line-dark": " border-bottom: 2px solid #797B89; width: 100%;height: 2px;",
+    "line-through": "text-decoration: line-through;",
+    "lowercase": "text-transform: lowercase;",
+    "max-h-max": "max-height: max-content;",
+    "max-h-min": "max-height: min-content;",
+    "max-h-none": "max-height: none;",
+    "max-w-max": "max-width: max-content;",
+    "max-w-min": "max-width: min-content;",
+    "max-w-none": "max-width: none;",
+    "min-h-max": "min-height: max-content;",
+    "min-h-min": "min-height: min-content;",
+    "min-h-none": "min-height: none;",
+    "min-w-max": "min-width: max-content;",
+    "min-w-min": "min-width: min-content;",
+    "min-w-none": "min-width: none;",
+    "no-decoration": "text-decoration: none;",
+    "none": "display: none;",
+    "normal-case": "text-transform: none;",
+    "poiter": "cursor: pointer;",
+    "relative": "position: relative;",
+    "scroll-x": " overflow-x: scroll;",
+    "scroll-y": " overflow-y: scroll;",
+    "static": "position: static;",
+    "sticky": "position: sticky;",
+    "td-lt": "text-decoration: line-through;",
+    "text-c": "text-align: center;",
+    "text-center": "text-align: center;",
+    "text-j": "text-align: justify;text-align-last: justify;",
+    "text-justify": "text-align: justify;",
+    "text-l": "text-align: left;",
+    "text-left": "text-align: left;",
+    "text-r": "text-align: right;",
+    "text-right": "text-align: right;",
+    "un-line": "text-decoration: underline;",
+    "underline": "text-decoration: underline;",
+    "uppercase": "text-transform: uppercase;",
+    "visible": "visibility: visible;",
+  },
+}
+`;

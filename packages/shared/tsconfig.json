@@ -1,0 +1,23 @@
+{
+	"exclude": [
+		"test",
+		"node_modules"
+	],
+	"compileOnSave": true,
+	"compilerOptions": {
+		"target": "es6", // 编译目标
+		"module": "es2020", // 模块类型
+		"lib": ["es2015", "es2016", "es2017", "es2022"], // 导入库类型定义
+		"strict": true, // 严格模式
+		"sourceMap": true, // 生成定义sourceMap
+		"strictNullChecks": true, // 不允许把null、undefined赋值给其他类型的变量
+		"allowSyntheticDefaultImports": true, // 允许使用默认导入
+		"declaration": true, // 生成定义文件
+		"declarationDir": "dist/types", //类型声明文件位置 自动创建声明文件(.d.ts)
+		"noUnusedLocals": false, // 未使用变量报错
+		"outDir": "./dist", // 编译输出目录 
+		"typeRoots": [ //typeRoots 用来指定默认的类型声明文件查找路径，默认为 node_modules/@types
+			"node_modules/@types"
+		]
+	}
+}

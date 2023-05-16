@@ -1,0 +1,20 @@
+{
+  "name": "docs",
+  "version": "0.0.1",
+  "description": "按需生成css，只需要写class名称即可",
+  "private": false,
+  "keywords": [],
+  "author": "cmz",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "all-in-class": "workspace:*"
+  }
+}

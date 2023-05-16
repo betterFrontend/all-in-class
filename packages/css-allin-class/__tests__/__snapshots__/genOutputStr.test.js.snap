@@ -1,0 +1,80 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`vue文件 生成css和修改vue文件 > vue2 1`] = `
+"
+<template>
+  <div id=\\"app\\">
+    <div class=\\"\\">
+        <div class=\\"bg-_ff5500 c-_fff w-50_5_ ccc\\">11</div>
+        <div class=\\"\\"  :class=\\"{'bg-_ff5500 c-_fff p-20px mt-10px w-100_05px': data.isPadding}\\">22</div>
+        <div class=\\"\\"  :class=\\"data.isPadding ? 'bg-_ff5500 c-_fff p-20px mt-10px w-90_': ''\\">33</div>
+    </div>
+    <img alt=\\"Vue logo\\" src=\\"./assets/logo.png\\">
+    <HelloWorld msg=\\"Welcome to Your Vue.js App\\"  :class=\\"\`fasdfasd: ''\`\\" />
+		<WidthHeight></WidthHeight>
+		<PaddingMargin></PaddingMargin>
+  </div>
+</template>
+
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+import WidthHeight from './components/WidthHeight.vue'
+import PaddingMargin from './components/PaddingMargin.vue'
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld,
+		WidthHeight,
+		PaddingMargin
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+"
+`;
+
+exports[`vue文件 生成css和修改vue文件 > vue2 2`] = `".bg-_ff5500{background-color:#ff5500;}.c-_fff{color:#fff;}.w-50_5_{width:50.5%;}.p-20px{padding:20px;}.mt-10px{margin-top:10px;}.w-100_05px{width:100.05px;}.w-90_{width:90%;}"`;
+
+exports[`vue文件 生成css和修改vue文件 > vue3 1`] = `
+"
+<template>
+	<div class=\\"\\">
+		<div class=\\"bg-_ff5500 c-_fff w-50_5_ ccc\\">11</div>
+		<div class=\\"\\"  :class=\\"{'bg-_ff5500 c-_fff p-20px mt-10px w-100_05px': data.isPadding}\\">22</div>
+		<div class=\\"\\"  :class=\\"data.isPadding ? 'bg-_ff5500 c-_fff p-20px mt-10px w-90_': ''\\">33</div>
+	</div>
+</template>
+<script setup>
+	import { ref, reactive } from 'vue';
+
+	const data = reactive({
+		isPadding: true,
+	})
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+"
+`;
+
+exports[`vue文件 生成css和修改vue文件 > vue3 2`] = `".bg-_ff5500{background-color:#ff5500;}.c-_fff{color:#fff;}.w-50_5_{width:50.5%;}.p-20px{padding:20px;}.mt-10px{margin-top:10px;}.w-100_05px{width:100.05px;}.w-90_{width:90%;}"`;

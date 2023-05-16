@@ -1,0 +1,6 @@
+**/*.zip
+**/*.vsix
+src/
+script/
+test/
+build/

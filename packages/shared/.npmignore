@@ -1,0 +1,17 @@
+node_modules/
+**/node_modules/
+src/
+plugin/
+script/
+test/
+test1/
+**/*副本*
+*.css
+
+rollup.config*
+tsconfig*
+
+.DS_Store
+
+.idea
+.vscode

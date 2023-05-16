@@ -1,0 +1,38 @@
+{
+	"name": "anlion-ide-plugin",
+	"description": "代码提示",
+	"displayName": "代码提示",
+	"version": "1.0.2",
+	"publisher": "cmz",
+	"private": false,
+	"keywords": [],
+	"engines": {
+		"HBuilderX": "^3.2.12",
+		"vscode": "^1.73.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"main": "./out/index.js",
+	"scripts": {
+		"rollup": "rollup -c",
+		"rollup:w": "rollup -c -w",
+		"build:hx": "node scripts/build.js",
+		"build:v": " vsce package",
+		"build": "rollup -c && npm run build:hx &&  npm run build:v",
+		"pub": "vsce publish"
+	},
+	"activationEvents": [
+		"*",
+		"workspaceContains:package.json"
+	],
+	"contributes": {},
+	"extensionDependencies": [
+		"plugin-manager"
+	],
+	"dependencies": {
+		"@anlion/reg2str": "workspace:*",
+		"@anlion/shared": "workspace:*",
+		"vscode-languageserver": "^8.1.0"
+	}
+}

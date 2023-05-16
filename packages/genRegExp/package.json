@@ -1,0 +1,38 @@
+{
+	"name": "@anlion/reg2str",
+	"version": "1.0.1",
+	"description": "根据正则逆向生成字符串",
+	"private": false,
+	"keywords": [],
+	"author": "cmz",
+	"license": "MIT",
+	"funding": "https://www.npmjs.com/package/@a/reg2str",
+	"publishConfig": {
+		"registry": "https://registry.npmjs.com"
+	},
+	"exports": {
+		".": {
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs"
+		}
+	},
+	"main": "./dist/index.js",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "rollup",
+		"rollup": "rollup -c",
+		"rollup:red": "rollup -c  && node ./script/index.js",
+		"rollup:w": "rollup -c -w",
+		"stub": "unbuild --stub",
+		"pub": "npm publish --access public"
+	},
+	"devDependencies": {
+		
+	},
+	"dependencies": {
+		"drange": "^2.0.1",
+		"ret": "^0.5.0"
+	}
+}

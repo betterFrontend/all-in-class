@@ -1,0 +1,72 @@
+{
+  "name": "@all/monorepo",
+	"packageManager": "pnpm@7.18.2",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r --filter=./packages/* run rollup",
+		"docs:build": "pnpm -r --filter=./packages/* run docs:build",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitest/coverage-c8": "^0.29.8",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "magic-string": "^0.30.0",
+    "memfs": "^3.4.13",
+    "unbuild": "^1.1.2",
+    "vite": "^4.1.4",
+    "vitepress": "1.0.0-alpha.73",
+    "vitest": "^0.29.2",
+    "vue-loader": "^17.0.1",
+    "vue-style-loader": "^4.1.3",
+    "vue-template-compiler": "^2.7.14",
+    "webpack": "^5.75.0"
+  },
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "compressing": "^1.9.0",
+    "fonteditor-core": "^2.1.11",
+    "rollup": "^3.19.1",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-polyfill-node": "^0.12.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "vue": "2"
+  },
+  "main": "alias.js",
+	"exports": {
+	  ".": {
+	    "require": "./dist/index.js",
+	    "import": "./dist/index.mjs"
+	  },
+	  "./all-in-class": {
+	    "require": "./packages/css-allin-class/src/index.js",
+	    "import": "./packages/css-allin-class/src/index.js"
+	  },
+	  "./preset.js": {
+	    "require": "./dist/preset.js",
+	    "import": "./dist/preset.mjs"
+	  },
+	  "./preset": {
+	    "require": "./dist/preset.js",
+	    "import": "./dist/preset.mjs"
+	  }
+	},
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meizhouchen/all-in-class.git"
+  },
+  "description": ""
+}
