@@ -43,15 +43,17 @@ describe('预设规则', async () => {
 		expect(genCssValue('bw-4', styleSheet).value).toBe('border-width:4rpx;')
 	})
 	it('border-radius', async ({ expect }) => {
-		// radius-10%-40px、
-		// expect(genCssValue('br-t-1', styleSheet).value).toBe('border-top-left-radius:1rpx;border-top-right-radius:1rpx;')
 		expect(genCssValue('radius-t-1', styleSheet).value).toBe('border-top-left-radius:1rpx;border-top-right-radius:1rpx;')
 		expect(genCssValue('radius-b-2', styleSheet).value).toBe('border-bottom-left-radius:2rpx;border-bottom-right-radius:2rpx;')
 		expect(genCssValue('radius-l-3', styleSheet).value).toBe('border-top-left-radius:3rpx;border-bottom-left-radius:3rpx;')
 		expect(genCssValue('radius-r-4', styleSheet).value).toBe('border-top-right-radius:4rpx;border-bottom-right-radius:4rpx;')
 		expect(genCssValue('radius-r-50%', styleSheet).value).toBe('border-top-right-radius:50%;border-bottom-right-radius:50%;')
-
-
+		expect(genCssValue('br-t-1', styleSheet).value).toBe('border-top-left-radius:1rpx;border-top-right-radius:1rpx;')
+		expect(genCssValue('br-b-2', styleSheet).value).toBe('border-bottom-left-radius:2rpx;border-bottom-right-radius:2rpx;')
+		expect(genCssValue('br-l-3', styleSheet).value).toBe('border-top-left-radius:3rpx;border-bottom-left-radius:3rpx;')
+		expect(genCssValue('br-r-4', styleSheet).value).toBe('border-top-right-radius:4rpx;border-bottom-right-radius:4rpx;')
+		expect(genCssValue('br-r-50%', styleSheet).value).toBe('border-top-right-radius:50%;border-bottom-right-radius:50%;')
+		
 		expect(genCssValue('radius-10', styleSheet).value).toBe('border-radius:10rpx;')
 		expect(genCssValue('radius-10-20', styleSheet).value).toBe('border-radius:10rpx 20rpx;')
 		expect(genCssValue('radius-10-20-30', styleSheet).value).toBe('border-radius:10rpx 20rpx 30rpx;')
@@ -75,7 +77,9 @@ describe('预设规则', async () => {
 	it('translate', async ({ expect }) => {
 		expect(genCssValue('translateX-.04', styleSheet).value).toBe('transform:translateX(.04rpx);')
 		expect(genCssValue('translateY-.04', styleSheet).value).toBe('transform:translateY(.04rpx);')
+		expect(genCssValue('translateY--.04', styleSheet).value).toBe('transform:translateY(-.04rpx);')
 		expect(genCssValue('translateY-40%', styleSheet).value).toBe('transform:translateY(40%);')
+		expect(genCssValue('translateY--40%', styleSheet).value).toBe('transform:translateY(-40%);')
 	})
 	it('shadow阴影', async ({ expect }) => {
 		expect(genCssValue('shadow-.4', styleSheet).value).toBe('box-shadow:0px 4px 12px 0px rgba(0, 0, 0, .4);')
@@ -205,10 +209,9 @@ describe('预设规则', async () => {
 	})
 	it('边距', async ({ expect }) => {
 		expect(genCssValue('m-10', styleSheet).value).toBe('margin:10rpx;')
-		expect(genCssValue('m-auto', styleSheet).value).toBe('margin:auto;')
+		expect(genCssValue('m--10', styleSheet).value).toBe('margin:-10rpx;')
 		expect(genCssValue('m-4-40', styleSheet).value).toBe('margin:4rpx 40rpx;')
-		expect(genCssValue('m-10-auto', styleSheet).value).toBe('margin:10rpx auto;')
-		expect(genCssValue('m-auto-10', styleSheet).value).toBe('margin:auto 10rpx;')
+
 		expect(genCssValue('m-4-40-0-9', styleSheet).value).toBe('margin:4rpx 40rpx 0rpx 9rpx;')
 		expect(genCssValue('mt-20', styleSheet).value).toBe('margin-top:20rpx;')
 		expect(genCssValue('mb-20', styleSheet).value).toBe('margin-bottom:20rpx;')
@@ -217,7 +220,17 @@ describe('预设规则', async () => {
 		expect(genCssValue('mlr-20', styleSheet).value).toBe('margin-left:20rpx;margin-right:20rpx;')
 		expect(genCssValue('mtb-20', styleSheet).value).toBe('margin-top:20rpx;margin-bottom:20rpx;')
 		expect(genCssValue('mtb-20.5', styleSheet).value).toBe('margin-top:20.5rpx;margin-bottom:20.5rpx;')
-
+		
+		expect(genCssValue('m-auto', styleSheet).value).toBe('margin:auto;')
+		expect(genCssValue('mlr-auto', styleSheet).value).toBe('margin-left:auto;margin-right:auto;')
+		expect(genCssValue('mtb-auto', styleSheet).value).toBe('margin-top:auto;margin-bottom:auto;')
+		expect(genCssValue('ml-auto', styleSheet).value).toBe('margin-left:auto;')
+		expect(genCssValue('mt-auto', styleSheet).value).toBe('margin-top:auto;')
+		expect(genCssValue('mb-auto', styleSheet).value).toBe('margin-bottom:auto;')
+		expect(genCssValue('m-10-auto', styleSheet).value).toBe('margin:10rpx auto;')
+		expect(genCssValue('m-auto-10', styleSheet).value).toBe('margin:auto 10rpx;')
+		// expect(genCssValue('m-auto-10-10-auto', styleSheet).value).toBe('margin:auto 10rpx;')
+		
 		expect(genCssValue('p-10', styleSheet).value).toBe('padding:10rpx;')
 		expect(genCssValue('p-auto', styleSheet).value).toBe('padding:auto;')
 		expect(genCssValue('p-4-40', styleSheet).value).toBe('padding:4rpx 40rpx;')

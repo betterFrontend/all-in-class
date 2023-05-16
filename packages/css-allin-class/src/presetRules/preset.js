@@ -12,7 +12,14 @@ export const preset = () => {
 		let radius4 = match[6] ? ' ' + match[6] + (match[7] || unit) : ''
 		return `border${match[2] ? '-' + direction[match[2]] : ''}-radius:${radius1}${radius2}${radius3}${radius4}`
 	}
-
+	
+	let marginUnit = (match, { unit }) => {
+		if (match[1] === 'auto') return '';
+		return match[2] ? match[2] : unit
+	}
+	let unitOrNull = (unit) => {
+		return unit ? unit : ''
+	}
 	return {
 		rules: [
 			[/^line-(\d{1,2})$/, (match) => `-webkit-line-clamp: ${match[1]};overflow: hidden;word-break: break-all;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;`],
@@ -70,34 +77,33 @@ export const preset = () => {
 				// break-all	word-break: break-all;
 			},
 			[/^m-(-?\d*\.?\d+|auto)-(\d*\.?\d+|auto)$/, (match, { unit }) => ({ 'margin': `${match[1]}${match[1] === 'auto' ? '' : unit} ${match[2]}${match[2] === 'auto' ? '' : unit};` })],
-			['m-auto', 'margin:auto;'],
-			[/^m-(-?\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin': `${match[1]}${match[2] ? match[2] : unit};` })],
-			[/^mt-(-?\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin-top': `${match[1]}${match[2] ? match[2] : unit};` })],
-			[/^mb-(-?\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin-bottom': `${match[1]}${match[2] ? match[2] : unit};` })],
-			[/^ml-(-?\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin-left': `${match[1]}${match[2] ? match[2] : unit};` })],
-			[/^mr-(-?\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin-right': `${match[1]}${match[2] ? match[2] : unit};` })],
-			[/^mlr-(-?\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `margin-left:${match[1]}${match[2] ? match[2] : unit};margin-right:${match[1]}${match[2] ? match[2] : unit};`],
-			[/^mtb-(-?\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `margin-top:${match[1]}${match[2] ? match[2] : unit};margin-bottom:${match[1]}${match[2] ? match[2] : unit};`],
+			[/^m-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin': `${match[1]}${marginUnit(match, { unit })};` })],
+			[/^mt-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin-top': `${match[1]}${marginUnit(match, { unit })};` })],
+			[/^mb-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin-bottom': `${match[1]}${marginUnit(match, { unit })};` })],
+			[/^ml-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin-left': `${match[1]}${marginUnit(match, { unit })};` })],
+			[/^mr-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'margin-right': `${match[1]}${marginUnit(match, { unit })};` })],
+			[/^mlr-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `margin-left:${match[1]}${marginUnit(match, { unit })};margin-right:${match[1]}${marginUnit(match, { unit })};`],
+			[/^mtb-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `margin-top:${match[1]}${marginUnit(match, { unit })};margin-bottom:${match[1]}${marginUnit(match, { unit })};`],
 			[/^m-(\d*\.?\d+)-(\d*\.?\d+)-(\d*\.?\d+)-(\d*\.?\d+)$/, (match, { unit }) => ({ 'margin': `${match[1]}${unit} ${match[2]}${unit} ${match[3]}${unit} ${match[4]}${unit};` })],
 
 			['p-auto', 'padding:auto;'],
 			[/^p-(\d*\.?\d+|auto)-(\d+|auto)$/, (match, { unit }) => ({ 'padding': `${match[1]}${match[1] === 'auto' ? '' : unit} ${match[2]}${match[2] === 'auto' ? '' : unit};` })],
-			[/^p-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding': `${match[1]}${match[2] ? match[2] : unit}` })],
-			[/^pt-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding-top': `${match[1]}${match[2] ? match[2] : unit}` })],
-			[/^pb-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding-bottom': `${match[1]}${match[2] ? match[2] : unit}` })],
-			[/^pl-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding-left': `${match[1]}${match[2] ? match[2] : unit}` })],
-			[/^pr-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding-right': `${match[1]}${match[2] ? match[2] : unit}` })],
-			[/^ptb-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `padding-top:${match[1]}${match[2] ? match[2] : unit};padding-bottom:${match[1]}${match[2] ? match[2] : unit};`],
-			[/^plr-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `padding-left:${match[1]}${match[2] ? match[2] : unit};padding-right:${match[1]}${match[2] ? match[2] : unit};`],
+			[/^p-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding': `${match[1]}${marginUnit(match, { unit })}` })],
+			[/^pt-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding-top': `${match[1]}${marginUnit(match, { unit })}` })],
+			[/^pb-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding-bottom': `${match[1]}${marginUnit(match, { unit })}` })],
+			[/^pl-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding-left': `${match[1]}${marginUnit(match, { unit })}` })],
+			[/^pr-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'padding-right': `${match[1]}${marginUnit(match, { unit })}` })],
+			[/^ptb-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `padding-top:${match[1]}${marginUnit(match, { unit })};padding-bottom:${match[1]}${marginUnit(match, { unit })};`],
+			[/^plr-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `padding-left:${match[1]}${marginUnit(match, { unit })};padding-right:${match[1]}${marginUnit(match, { unit })};`],
 			[/^p-(\d*\.?\d+)-(\d*\.?\d+)-(\d*\.?\d+)-(\d*\.?\d+)$/, (match, { unit }) => ({ 'padding': `${match[1]}${unit} ${match[2]}${unit} ${match[3]}${unit} ${match[4]}${unit};` })],
 
 			[/^(icon)-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => `width:${match[2]}${match[3] ? match[3] : unit};height:${match[2]}${match[3] ? match[3] : unit};`],
 			[/^(width|w)-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'width': `${match[2]}${match[3] ? match[3] : unit};` })],
 			[/^(height|h)-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'height': `${match[2]}${match[3] ? match[3] : unit};` })],
-			[/^min-w-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'min-width': `${match[1]}${match[2] ? match[2] : unit};` })],
-			[/^min-h-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'min-height': `${match[1]}${match[2] ? match[2] : unit};` })],
-			[/^max-w-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'max-width': `${match[1]}${match[2] ? match[2] : unit};` })],
-			[/^max-h-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'max-height': `${match[1]}${match[2] ? match[2] : unit};` })],
+			[/^min-w-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'min-width': `${match[1]}${marginUnit(match, { unit })};` })],
+			[/^min-h-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'min-height': `${match[1]}${marginUnit(match, { unit })};` })],
+			[/^max-w-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'max-width': `${match[1]}${marginUnit(match, { unit })};` })],
+			[/^max-h-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/, (match, { unit }) => ({ 'max-height': `${match[1]}${marginUnit(match, { unit })};` })],
 			// {
 			// 	'min-w-min': 'min-width: min-content;',
 			// 	'min-w-max': 'min-width: max-content;',
@@ -139,8 +145,8 @@ export const preset = () => {
 
 			[/^shadow-?(\d+)?-?(\d+)?-?(\d+)?-?(\d+)?-?(0?\.\d+)?$/, (match, { unit }) => ({ 'box-shadow': `${match[1] || '0'}px ${match[2] || '4'}px ${match[3] || '12'}px ${match[4] || '0'}px rgba(0, 0, 0, ${match[5] || '0.1'});` })],
 			[/^opacity-(0?\.?\d+)$/, (match, { unit }) => ({ 'opacity': `${match[1]}` })],
-			[/^translateX-(0?\.?\d+)(rem|vh|vw|%)?$/, (match, { unit }) => `transform:translateX(${match[1]}${match[2] || unit})`],
-			[/^translateY-(0?\.?\d+)(rem|vh|vw|%)?$/, (match, { unit }) => `transform:translateY(${match[1]}${match[2] || unit})`],
+			[/^translateX-(-?0?\.?\d+)(rem|vh|vw|%)?$/, (match, { unit }) => `transform:translateX(${match[1]}${match[2] || unit})`],
+			[/^translateY-(-?0?\.?\d+)(rem|vh|vw|%)?$/, (match, { unit }) => `transform:translateY(${match[1]}${match[2] || unit})`],
 
 			{
 				flex: 'display: flex;',
@@ -225,7 +231,7 @@ export const preset = () => {
 			// 	'btn-main': 'bg-main c-fff radius-4 p-14 row-center',
 			// }
 			// 动态规则
-			[/^(radius|rounded)-(t|l|r|b)-(\d+)(rem|em|px|rpx|%)?$/, (match) => {
+			[/^(br|radius|rounded)-(t|l|r|b)-(\d+)(rem|em|px|rpx|%)?$/, (match) => {
 				let direction = { t: ['tl', 'tr'], b: ['bl', 'br'], l: ['tl', 'bl'], r: ['tr', 'br'] }
 				return `radius-${direction[match[2]][0]}-${match[3]}${match[4] || ''} radius-${direction[match[2]][1]}-${match[3]}${match[4] || ''}`
 			}],
