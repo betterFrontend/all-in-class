@@ -27,8 +27,6 @@ pnpm i all-in-class -D
 
 #### **2. 配置**
 
-[规则详细配置](./packages/README.md)
-
 - **vite**
 
 ```js
