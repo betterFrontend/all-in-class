@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 import path from 'path'
 import clear from 'rollup-plugin-clear';
 import json from '@rollup/plugin-json';
-// import polyfillNode from 'rollup-plugin-polyfill-node';
+import polyfillNode from 'rollup-plugin-polyfill-node';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import cleanup from 'rollup-plugin-cleanup';
@@ -42,15 +42,16 @@ export default {
 	},
 	output: [
 		{ dir: 'dist', format: 'cjs', exports: 'named', entryFileNames: '[name].js' },
-		{ dir: 'dist', format: 'es', exports: 'named', entryFileNames: '[name].mjs' },
+		{ dir: 'dist', format: 'es', exports: 'named', entryFileNames: '[name].mjs' }
 	],
 	plugins: [
-		// polyfillNode(),
+		polyfillNode(),
 		json(),
 		clear({ targets: ['dist'] }), //清除dist目录
 		cleanup(), // 去除无效代码
 		ts({
-			useTsconfigDeclarationDir: true // 指定生成声明文件存放目录。
+			useTsconfigDeclarationDir: true, // 指定生成声明文件存放目录。
+			tsconfig: './tsconfig.json'
 		}),
 		nodeResolve({ preferBuiltins: true }),
 		// commonjs(),

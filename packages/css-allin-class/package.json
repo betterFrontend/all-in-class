@@ -39,6 +39,7 @@
     "rollup": "rollup -c",
     "rollup:red": "rollup -c  && node ./script/index.js",
     "rollup:w": "rollup -c -w",
+    "test": "vitest",
     "pub": "pnpm publish --access public"
   },
   "devDependencies": {

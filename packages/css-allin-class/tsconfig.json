@@ -1,7 +1,8 @@
 {
 	"exclude": [
 		"test",
-		"node_modules"
+		"node_modules",
+		"packages/*/__tests__"
 	],
 	"compileOnSave": true,
 	"compilerOptions": {
@@ -16,6 +17,7 @@
 		"declarationDir": "dist/types", //类型声明文件位置 自动创建声明文件(.d.ts)
 		"noUnusedLocals": false, // 未使用变量报错
 		"outDir": "./dist", // 编译输出目录 
+		"types": ["node"],
 		"typeRoots": [ //typeRoots 用来指定默认的类型声明文件查找路径，默认为 node_modules/@types
 			"node_modules/@types"
 		]

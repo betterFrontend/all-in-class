@@ -1,5 +1,5 @@
 import { genStyle, matchClassToken } from "../styles";
-import { getEnv } from '../utils/envInfo.js'
+import { getEnv } from '../utils/envInfo'
 import { transformVueClass } from '../utils/transform';
 
 let env = getEnv()

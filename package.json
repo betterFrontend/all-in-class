@@ -1,12 +1,12 @@
 {
   "name": "@all/monorepo",
-	"packageManager": "pnpm@7.18.2",
+  "packageManager": "pnpm@7.18.2",
   "version": "1.0.0",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "pnpm -r --filter=./packages/* run rollup",
-		"docs:build": "pnpm -r --filter=./packages/* run docs:build",
+    "docs:build": "pnpm -r --filter=./packages/* run docs:build",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
@@ -32,6 +32,7 @@
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/node": "^20.2.1",
     "compressing": "^1.9.0",
     "fonteditor-core": "^2.1.11",
     "rollup": "^3.19.1",
@@ -43,24 +44,24 @@
     "vue": "2"
   },
   "main": "alias.js",
-	"exports": {
-	  ".": {
-	    "require": "./dist/index.js",
-	    "import": "./dist/index.mjs"
-	  },
-	  "./all-in-class": {
-	    "require": "./packages/css-allin-class/src/index.js",
-	    "import": "./packages/css-allin-class/src/index.js"
-	  },
-	  "./preset.js": {
-	    "require": "./dist/preset.js",
-	    "import": "./dist/preset.mjs"
-	  },
-	  "./preset": {
-	    "require": "./dist/preset.js",
-	    "import": "./dist/preset.mjs"
-	  }
-	},
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./all-in-class": {
+      "require": "./packages/css-allin-class/src/index.js",
+      "import": "./packages/css-allin-class/src/index.js"
+    },
+    "./preset.js": {
+      "require": "./dist/preset.js",
+      "import": "./dist/preset.mjs"
+    },
+    "./preset": {
+      "require": "./dist/preset.js",
+      "import": "./dist/preset.mjs"
+    }
+  },
   "directories": {
     "test": "test"
   },
