@@ -5,10 +5,24 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "check": "tsc --incremental --noEmit",
     "build": "pnpm -r --filter=./packages/* run rollup",
     "docs:build": "pnpm -r --filter=./packages/* run docs:build",
     "test": "vitest",
     "coverage": "vitest run --coverage"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged && pnpm check",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint",
+      "prettier --parser=typescript --write"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -17,6 +31,7 @@
     "@vitest/coverage-c8": "^0.29.8",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
+    "lint-staged": "^13.2.2",
     "magic-string": "^0.30.0",
     "memfs": "^3.4.13",
     "unbuild": "^1.1.2",
@@ -33,6 +48,7 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/node": "^20.2.1",
+    "chalk": "^5.2.0",
     "compressing": "^1.9.0",
     "fonteditor-core": "^2.1.11",
     "rollup": "^3.19.1",
