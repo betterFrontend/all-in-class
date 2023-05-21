@@ -25,15 +25,6 @@ const resolve = p => path.resolve(__dirname, p)
 // const packageOptions = pkg.buildOptions || {}
 // const name = packageOptions.filename || path.basename(packageDir)
 
-
-// 'runtime-dev': {
-//   entry: resolve('web/entry-runtime.ts'),
-//   dest: resolve('dist/vue.runtime.js'),
-//   format: 'umd',
-//   env: 'development',
-//   banner
-// }
-
 export default {
 	input: {
 		'loader': 'src/webpack/loader.js',

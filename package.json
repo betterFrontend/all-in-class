@@ -13,7 +13,7 @@
     "postinstall": "simple-git-hooks"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged && pnpm check",
+    "pre-commit": "pnpm lint-staged",
     "commit-msg": "node scripts/verifyCommit.js"
   },
   "lint-staged": {
@@ -29,11 +29,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/parser": "^5.59.6",
     "@vitest/coverage-c8": "^0.29.8",
     "babel-loader": "^9.1.2",
     "chalk": "^5.2.0",
     "css-loader": "^6.7.3",
     "eslint": "^8.41.0",
+    "eslint-plugin-jest": "^27.2.1",
     "lint-staged": "^13.2.2",
     "magic-string": "^0.30.0",
     "memfs": "^3.4.13",

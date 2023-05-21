@@ -1,21 +1,21 @@
-import { getEnv } from "./envInfo";
+import { getEnv } from './envInfo'
 
 export function addFix(val: string, prefix: string, suffix: string) {
-	return `${prefix ? prefix : ''}${val}${suffix ? suffix : ''}`
+  return `${prefix ? prefix : ''}${val}${suffix ? suffix : ''}`
 }
 
 export function removeFix(val: string, prefix: string, suffix: string) {
-	let resStr = val;
-	if (prefix) {
-		const pre = RegExp(`^${prefix}`, 'g');
-		resStr = val.replace(pre, '')
-	}
-	if (suffix) {
-		const suf = RegExp(`^${suffix}$`, 'g');
-		resStr = val.replace(suf, '')
-	}
+  let resStr = val
+  if (prefix) {
+    const pre = RegExp(`^${prefix}`, 'g')
+    resStr = val.replace(pre, '')
+  }
+  if (suffix) {
+    const suf = RegExp(`^${suffix}$`, 'g')
+    resStr = val.replace(suf, '')
+  }
 
-	return resStr
+  return resStr
 }
 
 /** TODO 合并css减小体积
@@ -56,72 +56,79 @@ export function removeFix(val: string, prefix: string, suffix: string) {
  */
 // .cc{color:#2c3e50;} === .cc{color:#2c3e50} 去掉最后一个;可以缩小体积 只在h5
 export interface OutputCss {
-	[propname:string]: CssValue;
+  [propname: string]: CssValue
 }
 export interface CssValue {
-	token: string,
-	noFixToken?: string,
-	type?: string,
-	num: number,
-	value: string
+  token: string
+  noFixToken?: string
+  type?: string
+  num: number
+  value: string
 }
 
 export interface GenOutputStrOptions {
-	outputCss: OutputCss,
-	join?: string
+  outputCss: OutputCss
+  join?: string
 }
 
 export function genOutputStr({ outputCss, join }: GenOutputStrOptions) {
-	// TODO
-	// 把每次vue文件变动，维护最终样式使用的数量，改为这儿最后输出时，根据各模块匹配生成
+  // TODO
+  // 把每次vue文件变动，维护最终样式使用的数量，改为这儿最后输出时，根据各模块匹配生成
 
-	// 得到最终使用的class
-	const usedClass = []
+  // 得到最终使用的class
+  const usedClass = []
 
-	// 生成最终输出的所有css样式
-	join = join !== undefined ? join : getEnv().join
-	const outputStr = Object.values(outputCss)
-		.filter(item => item.num > 0)
-		.map(item => {
-			let token = item.token
-			// TODO 增加专门处理class的方法
+  // 生成最终输出的所有css样式
+  join = join !== undefined ? join : getEnv().join
+  const outputStr = Object.values(outputCss)
+    .filter(item => item.num > 0)
+    .map(item => {
+      let token = item.token
+      // TODO 增加专门处理class的方法
 
-			// 修改，拼接class的名称
-			if (token.match(/hover:/)) {
-				token = token.replace(/hover:/, 'hover_') + ':hover'
-			}
-			if (token.match(/last:/)) {
-				token = token.replace(/last:/, 'last_') + ':last-child'
-			}
+      // 修改，拼接class的名称
+      if (token.match(/hover:/)) {
+        token = token.replace(/hover:/, 'hover_') + ':hover'
+      }
+      if (token.match(/last:/)) {
+        token = token.replace(/last:/, 'last_') + ':last-child'
+      }
 
-			token = token.replace(/[%#\.>]/g, '_')
+      token = token.replace(/[%#\.>]/g, '_')
 
-			// 修改加权重的token
-			const isImportant: RegExpMatchArray | null = token.match(/(.*)-i(\d*)$/)
-			if (isImportant) {
-				let [rule, c, iNum]  = isImportant
-				let num: string = Number(iNum) < 3 ? '3' : iNum
+      // 修改加权重的token
+      const isImportant: RegExpMatchArray | null = token.match(/(.*)-i(\d*)$/)
+      if (isImportant) {
+        let [rule, c, iNum] = isImportant
+        let num: string = Number(iNum) < 3 ? '3' : iNum
 
-				let fix = `.${rule}`
-				token = fix.repeat(Number(num)).slice(1)
-			}
+        let fix = `.${rule}`
+        token = fix.repeat(Number(num)).slice(1)
+      }
 
-			if (getEnv().isUniapp && getEnv().uniappPlatfrom === 'h5') {
-				// rpx->rem
-				item.value = item.value.split(';').filter(Boolean)
-					.map(val => val.trim().replace(/(\d*\.*\d+)rpx$/, (...match) => `${match[1] / 32}rem`)).join(';')
-			};
+      if (getEnv().isUniapp && getEnv().uniappPlatfrom === 'h5') {
+        // rpx->rem
+        item.value = item.value
+          .split(';')
+          .filter(Boolean)
+          .map(val =>
+            val
+              .trim()
+              .replace(/(\d*\.*\d+)rpx$/, (...match) => `${match[1] / 32}rem`)
+          )
+          .join(';')
+      }
 
-			return `.${token}{${item.value}}`
-		})
-		.join(join);
+      return `.${token}{${item.value}}`
+    })
+    .join(join)
 
-	// 这种写法,慢一点点?!
-	// let outputStr = ''
-	// Object.values(outputCss).filter(item => {
-	// 	if (item.num > 0) {
-	// 		outputStr += `.${item.token}{${item.value}}`
-	// 	}
-	// })
-	return outputStr
+  // 这种写法,慢一点点?!
+  // let outputStr = ''
+  // Object.values(outputCss).filter(item => {
+  // 	if (item.num > 0) {
+  // 		outputStr += `.${item.token}{${item.value}}`
+  // 	}
+  // })
+  return outputStr
 }

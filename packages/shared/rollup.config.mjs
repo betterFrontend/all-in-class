@@ -35,7 +35,6 @@ const resolve = p => path.resolve(__dirname, p)
 
 export default {
 	input: {
-		// 'loader': 'src/webpack/loader.js',
 		'index': 'src/index.ts',
 	},
 	output: [
