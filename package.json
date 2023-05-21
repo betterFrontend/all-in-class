@@ -9,7 +9,8 @@
     "build": "pnpm -r --filter=./packages/* run rollup",
     "docs:build": "pnpm -r --filter=./packages/* run docs:build",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "postinstall": "simple-git-hooks"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged && pnpm check",
@@ -30,10 +31,14 @@
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.8",
     "babel-loader": "^9.1.2",
+    "chalk": "^5.2.0",
     "css-loader": "^6.7.3",
+    "eslint": "^8.41.0",
     "lint-staged": "^13.2.2",
     "magic-string": "^0.30.0",
     "memfs": "^3.4.13",
+    "prettier": "^2.8.8",
+    "simple-git-hooks": "^2.8.1",
     "unbuild": "^1.1.2",
     "vite": "^4.1.4",
     "vitepress": "1.0.0-alpha.73",
@@ -48,7 +53,6 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/node": "^20.2.1",
-    "chalk": "^5.2.0",
     "compressing": "^1.9.0",
     "fonteditor-core": "^2.1.11",
     "rollup": "^3.19.1",
