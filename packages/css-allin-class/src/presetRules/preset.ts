@@ -1,11 +1,19 @@
+import type { Direction, Config } from '../types'
 // 对象或者方法 最后返回的是对象
 export const preset = () => {
-  let direction = { t: 'top', b: 'bottom', l: 'left', r: 'right' }
+  interface Direction1 {
+    [key: string]: string
+    t: 'top'
+    b: 'bottom'
+    l: 'left'
+    r: 'right'
+  }
+  let direction: Direction1 = { t: 'top', b: 'bottom', l: 'left', r: 'right' }
   let dic = { bg: 'background-color', c: 'color', color: 'color' }
   let globalValues = ['inherit', 'initial', 'revert', 'revert-layer', 'unset']
 
-  let radiusFun = (match, { unit }) => {
-    let direction = {
+  let radiusFun = (match: RegExpMatchArray, { unit }: Config) => {
+    let direction: Direction = {
       t: 'top',
       b: 'bottom',
       l: 'left',
@@ -19,23 +27,24 @@ export const preset = () => {
     let radius2 = match[4] ? ' ' + match[4] + (match[7] || unit) : ''
     let radius3 = match[5] ? ' ' + match[5] + (match[7] || unit) : ''
     let radius4 = match[6] ? ' ' + match[6] + (match[7] || unit) : ''
+
     return `border${
       match[2] ? '-' + direction[match[2]] : ''
     }-radius:${radius1}${radius2}${radius3}${radius4}`
   }
 
-  let marginUnit = (match, { unit }) => {
+  let marginUnit = (match: RegExpMatchArray, { unit }: Config) => {
     if (match[1] === 'auto') return ''
     return match[2] ? match[2] : unit
   }
-  let unitOrNull = unit => {
-    return unit ? unit : ''
-  }
+  // let unitOrNull = unit => {
+  //   return unit ? unit : ''
+  // }
   return {
     rules: [
       [
         /^line-(\d{1,2})$/,
-        match =>
+        (match: RegExpMatchArray) =>
           `-webkit-line-clamp: ${match[1]};overflow: hidden;word-break: break-all;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;`
       ],
 
@@ -43,25 +52,30 @@ export const preset = () => {
       ['c-none', 'color: transparent;'],
       [
         /^(color|c)-#([0-9a-fA-F]{1,6})$/,
-        match =>
+        (match: RegExpMatchArray) =>
           `color:#${
             match[2].length === 3
               ? match[2]
               : match[2].repeat(6 / match[2].length)
           };`
       ],
-      [/^(color|c)-v-([\w-_]{1,20})$/, match => `color:var(--${match[2]});`],
+      [
+        /^(color|c)-v-([\w-_]{1,20})$/,
+        (match: RegExpMatchArray) => `color:var(--${match[2]});`
+      ],
       [
         /^(color|c)-([^#][a-z]{1,20})$/,
-        match => `color:${match[2] == 'cur' ? 'currentcolor' : match[2]};`
+        (match: RegExpMatchArray) =>
+          `color:${match[2] == 'cur' ? 'currentcolor' : match[2]};`
       ],
       [
         /^gba-(\d{1,3})-(\d{1,3})-(\d{1,3})$/,
-        match => `color:gba(${match[1]}%,${match[2]}%,${match[3]}%);`
+        (match: RegExpMatchArray) =>
+          `color:gba(${match[1]}%,${match[2]}%,${match[3]}%);`
       ],
       [
         /^rgba-(\d{1,3})-(\d{1,3})-(\d{1,3})-((\d{1,4})|(?:0*\.(\d{1,4})))$/,
-        match =>
+        (match: RegExpMatchArray) =>
           `color:rgba(${match[1]},${match[2]},${match[3]},${
             match[4].includes('.') ? match[4] : '.' + match[4]
           });`
@@ -69,7 +83,7 @@ export const preset = () => {
 
       [
         /^bg-#([0-9a-fA-F]{1,6})$/,
-        match =>
+        (match: RegExpMatchArray) =>
           `background-color:#${
             match[1].length === 3
               ? match[1]
@@ -78,19 +92,23 @@ export const preset = () => {
       ],
       [
         /^bg-v-([\w-_]{1,20})$/,
-        match => `background-color:var(--${match[1]});`
+        (match: RegExpMatchArray) => `background-color:var(--${match[1]});`
       ],
-      [/^bg-([^#][a-z]{1,40})$/, match => `background-color:${match[1]};`],
+      [
+        /^bg-([^#][a-z]{1,40})$/,
+        (match: RegExpMatchArray) => `background-color:${match[1]};`
+      ],
       [
         /^bg-rgba-(\d{1,3})-(\d{1,3})-(\d{1,3})-((\d{1,4})|(?:0*\.(\d{1,4})))$/,
-        match =>
+        (match: RegExpMatchArray) =>
           `background-color:rgba(${match[1]},${match[2]},${match[3]},${
             match[4].includes('.') ? match[4] : '.' + match[4]
           });`
       ],
       [
         /^bg-gba-(\d{1,3})-(\d{1,3})-(\d{1,3})$/,
-        match => `background-color:gba(${match[1]},${match[2]},${match[3]});`
+        (match: RegExpMatchArray) =>
+          `background-color:gba(${match[1]},${match[2]},${match[3]});`
       ],
       // [/^bg-linear-(\d+)-(\d+)-(\d+)$/, (match) => `color:rgba(${match[1]},${match[2]},${match[3]});`],
       //  background: linear-gradient(to right,
@@ -102,17 +120,21 @@ export const preset = () => {
 
       [
         /^fs-(\d*\.?\d+)(rem|vh|vw|px|rpx|em)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `font-size: ${match[1]}${match[2] ? match[2] : unit};`
       ],
-      [/^fw-(\d{1,4})$/, (match, { unit }) => `font-weight: ${match[1]};`],
+      [
+        /^fw-(\d{1,4})$/,
+        (match: RegExpMatchArray, { unit }: Config) =>
+          `font-weight: ${match[1]};`
+      ],
       [
         /^lh-(\d*\.?\d+)(rem|vh|vw|px|rpx|em)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `line-height: ${match[1]}${match[2] ? match[2] : ''};`
       ],
 
-      [/^(?:f|flex)-(\d+)$/, match => `flex: ${match[1]};`],
+      [/^(?:f|flex)-(\d+)$/, (match: RegExpMatchArray) => `flex: ${match[1]};`],
       {
         'text-left': 'text-align: left;',
         'text-center': 'text-align: center;',
@@ -141,7 +163,7 @@ export const preset = () => {
       },
       [
         /^m-(-?\d*\.?\d+|auto)-(\d*\.?\d+|auto)$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           margin: `${match[1]}${match[1] === 'auto' ? '' : unit} ${match[2]}${
             match[2] === 'auto' ? '' : unit
           };`
@@ -149,51 +171,51 @@ export const preset = () => {
       ],
       [
         /^m-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           margin: `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
       [
         /^mt-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'margin-top': `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
       [
         /^mb-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'margin-bottom': `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
       [
         /^ml-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'margin-left': `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
       [
         /^mr-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'margin-right': `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
       [
         /^mlr-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `margin-left:${match[1]}${marginUnit(match, { unit })};margin-right:${
             match[1]
           }${marginUnit(match, { unit })};`
       ],
       [
         /^mtb-(-?\d*\.?\d+|auto)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `margin-top:${match[1]}${marginUnit(match, { unit })};margin-bottom:${
             match[1]
           }${marginUnit(match, { unit })};`
       ],
       [
         /^m-(\d*\.?\d+)-(\d*\.?\d+)-(\d*\.?\d+)-(\d*\.?\d+)$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           margin: `${match[1]}${unit} ${match[2]}${unit} ${match[3]}${unit} ${match[4]}${unit};`
         })
       ],
@@ -201,7 +223,7 @@ export const preset = () => {
       ['p-auto', 'padding:auto;'],
       [
         /^p-(\d*\.?\d+|auto)-(\d+|auto)$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           padding: `${match[1]}${match[1] === 'auto' ? '' : unit} ${match[2]}${
             match[2] === 'auto' ? '' : unit
           };`
@@ -209,95 +231,95 @@ export const preset = () => {
       ],
       [
         /^p-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           padding: `${match[1]}${marginUnit(match, { unit })}`
         })
       ],
       [
         /^pt-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'padding-top': `${match[1]}${marginUnit(match, { unit })}`
         })
       ],
       [
         /^pb-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'padding-bottom': `${match[1]}${marginUnit(match, { unit })}`
         })
       ],
       [
         /^pl-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'padding-left': `${match[1]}${marginUnit(match, { unit })}`
         })
       ],
       [
         /^pr-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'padding-right': `${match[1]}${marginUnit(match, { unit })}`
         })
       ],
       [
         /^ptb-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `padding-top:${match[1]}${marginUnit(match, {
             unit
           })};padding-bottom:${match[1]}${marginUnit(match, { unit })};`
       ],
       [
         /^plr-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `padding-left:${match[1]}${marginUnit(match, {
             unit
           })};padding-right:${match[1]}${marginUnit(match, { unit })};`
       ],
       [
         /^p-(\d*\.?\d+)-(\d*\.?\d+)-(\d*\.?\d+)-(\d*\.?\d+)$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           padding: `${match[1]}${unit} ${match[2]}${unit} ${match[3]}${unit} ${match[4]}${unit};`
         })
       ],
 
       [
         /^(icon)-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `width:${match[2]}${match[3] ? match[3] : unit};height:${match[2]}${
             match[3] ? match[3] : unit
           };`
       ],
       [
         /^(width|w)-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           width: `${match[2]}${match[3] ? match[3] : unit};`
         })
       ],
       [
         /^(height|h)-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           height: `${match[2]}${match[3] ? match[3] : unit};`
         })
       ],
       [
         /^min-w-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'min-width': `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
       [
         /^min-h-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'min-height': `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
       [
         /^max-w-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'max-width': `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
       [
         /^max-h-(\d*\.?\d+)(em|rem|vh|vw|%|px|rpx)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'max-height': `${match[1]}${marginUnit(match, { unit })};`
         })
       ],
@@ -319,12 +341,14 @@ export const preset = () => {
 
       [
         /^order-(-?\d*\.?\d+)$/,
-        (match, { unit }) => ({ order: `${match[1]};` })
+        (match: RegExpMatchArray, { unit }: Config) => ({
+          order: `${match[1]};`
+        })
       ],
 
       [
         /^border(?:-(\d+))?(?:-(solid|dashed|dotted|double|groove|ridge|inset|outset))?(?:-#([0-9a-fA-F]{1,6}))?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `border:${match[1] || '1'}${unit} ${match[2] || 'solid'} #${
             match[3] && match[3].length === 3
               ? match[3]
@@ -333,7 +357,7 @@ export const preset = () => {
       ],
       [
         /^border(?:-(\d+))?(?:-#([0-9a-fA-F]{1,6}))?(?:-(solid|dashed|dotted|double|groove|ridge|inset|outset))?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `border:${match[1] || '1'}${unit} ${match[3] || 'solid'} #${
             match[2] && match[2].length === 3
               ? match[2]
@@ -342,7 +366,7 @@ export const preset = () => {
       ],
       [
         /^border(?:-(solid|dashed|dotted|double|groove|ridge|inset|outset))?(?:-#([0-9a-fA-F]{1,6}))?(?:-(\d{1,6}))?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `border:${match[3] || '1'}${unit} ${match[1] || 'solid'} #${
             match[2] && match[2].length === 3
               ? match[2]
@@ -351,7 +375,7 @@ export const preset = () => {
       ],
       [
         /^border(?:-(solid|dashed|dotted|double|groove|ridge|inset|outset))?(?:-(\d{1,6}))?(?:-#([0-9a-fA-F]{1,6}))?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `border:${match[2] || '1'}${unit} ${match[1] || 'solid'} #${
             match[3] && match[3].length === 3
               ? match[3]
@@ -360,7 +384,7 @@ export const preset = () => {
       ],
       [
         /^border(?:-#([0-9a-fA-F]{1,6}))?(?:-(solid|dashed|dotted|double|groove|ridge|inset|outset))?(?:-(\d{1,6}))?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `border:${match[3] || '1'}${unit} ${match[2] || 'solid'} #${
             match[1] && match[1].length === 3
               ? match[1]
@@ -369,7 +393,7 @@ export const preset = () => {
       ],
       [
         /^border(?:-#([0-9a-fA-F]{1,6}))?(?:-(\d{1,6}))?(?:-(solid|dashed|dotted|double|groove|ridge|inset|outset))?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `border:${match[2] || '1'}${unit} ${match[3] || 'solid'} #${
             match[1] && match[1].length === 3
               ? match[1]
@@ -383,48 +407,49 @@ export const preset = () => {
       ],
       [
         /^bw-?(t|l|r|b)?-(\d+)(px|rpx)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `border${match[1] ? '-' + direction[match[1]] : ''}-width:${
             match[2]
           }${unit};`
       ],
       [
         /^bc-#([\d\w]{1,6})$/,
-        match => `border-color:#${match[1].repeat(6 / match[1].length)};`
+        (match: RegExpMatchArray) =>
+          `border-color:#${match[1].repeat(6 / match[1].length)};`
       ],
       ['bc-none', 'border-color: transparent;'],
       [
         /^bs-(solid|dashed|dotted|double|groove|ridge|inset|outset|none)$/,
-        match => `border-style:${match[1]};`
+        (match: RegExpMatchArray) => `border-style:${match[1]};`
       ],
 
       [
         /^(top|t)-(-?\d*\.?\d+)(rem|vh|vw|%)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           top: `${match[2]}${match[3] ? match[3] : unit};`
         })
       ],
       [
         /^(left|l)-(-?\d*\.?\d+)(rem|vh|vw|%)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           left: `${match[2]}${match[3] ? match[3] : unit};`
         })
       ],
       [
         /^(right|r)-(-?\d*\.?\d+)(rem|vh|vw|%)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           right: `${match[2]}${match[3] ? match[3] : unit};`
         })
       ],
       [
         /^(bottom|b)-(-?\d*\.?\d+)(rem|vh|vw|%)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           bottom: `${match[2]}${match[3] ? match[3] : unit};`
         })
       ],
       [
         /^inset-(-?0?\.?\d*)(rem|vh|vw|%)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `top: ${match[1]}${match[2] || unit};right: ${match[1]}${
             match[2] || unit
           };bottom: ${match[1]}${match[2] || unit};left: ${match[1]}${
@@ -434,12 +459,14 @@ export const preset = () => {
 
       [
         /^z-(-?\d+|auto)$/,
-        (match, { unit }) => ({ 'z-index': `${match[1]};` })
+        (match: RegExpMatchArray, { unit }: Config) => ({
+          'z-index': `${match[1]};`
+        })
       ],
 
       [
         /^shadow-?(\d+)?-?(\d+)?-?(\d+)?-?(\d+)?-?(0?\.\d+)?$/,
-        (match, { unit }) => ({
+        (match: RegExpMatchArray, { unit }: Config) => ({
           'box-shadow': `${match[1] || '0'}px ${match[2] || '4'}px ${
             match[3] || '12'
           }px ${match[4] || '0'}px rgba(0, 0, 0, ${match[5] || '0.1'});`
@@ -447,16 +474,18 @@ export const preset = () => {
       ],
       [
         /^opacity-(0?\.?\d+)$/,
-        (match, { unit }) => ({ opacity: `${match[1]}` })
+        (match: RegExpMatchArray, { unit }: Config) => ({
+          opacity: `${match[1]}`
+        })
       ],
       [
         /^translateX-(-?0?\.?\d+)(rem|vh|vw|%)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `transform:translateX(${match[1]}${match[2] || unit})`
       ],
       [
         /^translateY-(-?0?\.?\d+)(rem|vh|vw|%)?$/,
-        (match, { unit }) =>
+        (match: RegExpMatchArray, { unit }: Config) =>
           `transform:translateY(${match[1]}${match[2] || unit})`
       ],
 
@@ -545,8 +574,15 @@ export const preset = () => {
       // 动态规则
       [
         /^(br|radius|rounded)-(t|l|r|b)-(\d+)(rem|em|px|rpx|%)?$/,
-        match => {
-          let direction = {
+        (match: RegExpMatchArray) => {
+          type Direction = {
+            [key: string]: [string, string]
+            t: [string, string]
+            b: [string, string]
+            l: [string, string]
+            r: [string, string]
+          }
+          let direction: Direction = {
             t: ['tl', 'tr'],
             b: ['bl', 'br'],
             l: ['tl', 'bl'],

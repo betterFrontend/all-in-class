@@ -1,5 +1,5 @@
 import vitePlugin from './vite.js'
-import viteWxcssOutput from './viteWxcssOutput.js'
+import viteWxcssOutput from './viteWxcssOutput'
 
 export default function vite(userConfig) {
   let pluginShare = {}

@@ -1,10 +1,18 @@
 import { getEnv } from './envInfo'
 
-export function addFix(val: string, prefix: string, suffix: string) {
+export function addFix(
+  val: string = '',
+  prefix: string = '',
+  suffix: string = ''
+) {
   return `${prefix ? prefix : ''}${val}${suffix ? suffix : ''}`
 }
 
-export function removeFix(val: string, prefix: string, suffix: string) {
+export function removeFix(
+  val: string = '',
+  prefix: string = '',
+  suffix: string = ''
+) {
   let resStr = val
   if (prefix) {
     const pre = RegExp(`^${prefix}`, 'g')
@@ -20,26 +28,26 @@ export function removeFix(val: string, prefix: string, suffix: string) {
 
 /** TODO 合并css减小体积
  * .w-line-1 {
-	// overflow: hidden;
-	// white-space: nowrap;
-	// text-overflow: ellipsis;
-	-webkit-line-clamp: 1;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
 }
 
 .w-line-2 {
-	-webkit-line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .w-line-3 {
-	-webkit-line-clamp: 3;
+  -webkit-line-clamp: 3;
 }
 
 .w-line-4 {
-	-webkit-line-clamp: 4;
+  -webkit-line-clamp: 4;
 }
 
 .w-line-5 {
-	-webkit-line-clamp: 5;
+  -webkit-line-clamp: 5;
 }
 
 .w-line-1,
@@ -47,11 +55,11 @@ export function removeFix(val: string, prefix: string, suffix: string) {
 .w-line-3,
 .w-line-4,
 .w-line-5 {
-	overflow: hidden;
-	word-break: break-all;
-	text-overflow: ellipsis;
-	display: -webkit-box; // 弹性伸缩盒
-	-webkit-box-orient: vertical; // 设置伸缩盒子元素排列方式
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; // 弹性伸缩盒
+  -webkit-box-orient: vertical; // 设置伸缩盒子元素排列方式
 } 
  */
 // .cc{color:#2c3e50;} === .cc{color:#2c3e50} 去掉最后一个;可以缩小体积 只在h5

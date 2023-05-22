@@ -28,6 +28,7 @@ importers:
       rollup-plugin-terser: ^7.0.2
       rollup-plugin-typescript2: ^0.34.1
       simple-git-hooks: ^2.8.1
+      tslib: ^2.5.2
       unbuild: ^1.1.2
       vite: ^4.1.4
       vitepress: 1.0.0-alpha.73
@@ -64,6 +65,7 @@ importers:
       memfs: registry.npmmirror.com/memfs/3.4.13
       prettier: registry.npmmirror.com/prettier/2.8.8
       simple-git-hooks: registry.npmmirror.com/simple-git-hooks/2.8.1
+      tslib: registry.npmmirror.com/tslib/2.5.2
       unbuild: registry.npmmirror.com/unbuild/1.1.2
       vite: registry.npmmirror.com/vite/4.1.4_@types+node@20.2.1
       vitepress: registry.npmmirror.com/vitepress/1.0.0-alpha.73_@types+node@20.2.1
@@ -4581,7 +4583,7 @@ packages:
       fs-extra: registry.npmmirror.com/fs-extra/10.1.0
       rollup: registry.npmmirror.com/rollup/3.19.1
       semver: registry.npmmirror.com/semver/7.3.8
-      tslib: registry.npmmirror.com/tslib/2.5.0
+      tslib: registry.npmmirror.com/tslib/2.5.2
 
   registry.npmmirror.com/rollup-pluginutils/2.8.2:
     resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz}
@@ -4622,7 +4624,7 @@ packages:
     name: rxjs
     version: 7.8.1
     dependencies:
-      tslib: registry.npmmirror.com/tslib/2.5.0
+      tslib: registry.npmmirror.com/tslib/2.5.2
     dev: true
 
   registry.npmmirror.com/safe-buffer/5.1.2:
@@ -5095,10 +5097,10 @@ packages:
     version: 1.14.1
     dev: true
 
-  registry.npmmirror.com/tslib/2.5.0:
-    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.5.0.tgz}
+  registry.npmmirror.com/tslib/2.5.2:
+    resolution: {integrity: sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.5.2.tgz}
     name: tslib
-    version: 2.5.0
+    version: 2.5.2
 
   registry.npmmirror.com/tsutils/3.21.0:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tsutils/-/tsutils-3.21.0.tgz}

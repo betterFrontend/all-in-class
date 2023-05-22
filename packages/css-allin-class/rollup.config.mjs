@@ -28,7 +28,7 @@ const resolve = p => path.resolve(__dirname, p)
 export default {
 	input: {
 		'loader': 'src/webpack/loader.js',
-		'preset': 'src/presetRules/preset.js',
+		'preset': 'src/presetRules/preset.ts',
 		'index': 'src/index.js',
 	},
 	output: [
